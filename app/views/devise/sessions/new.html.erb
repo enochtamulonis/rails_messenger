@@ -1,0 +1,29 @@
+<h2>Log in</h2>
+<%= turbo_frame_tag "user_authentication" do %>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "border border-black rounded-sm focus:ring-blue-500 pl-1"  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", :class => "border border-black rounded-sm focus:ring-blue-500 pl-1"  %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions mt-4">
+      <%= f.submit "Log in", :class => "bg-blue-500 px-8 py-1 text-white rounded-xl cursor-pointer focus:text-gray-400 focus:outline-none" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+<% end %>

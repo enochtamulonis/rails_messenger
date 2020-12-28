@@ -1,0 +1,18 @@
+<div class="flex">
+  <div class="w-1/5 h-screen bg-gray-400 flex flex-col items-center">
+    <div class="h-20 w-full bg-gray-300">
+      <%= turbo_frame_tag "new_room" do %>
+        <a href="/rooms/new" class="h-20 w-full"> Create a new conversation </a>
+      <% end %>
+    </div>
+    <ul class="w-full h-full">
+      <%= turbo_stream_from "rooms" %>
+      <%= turbo_frame_tag "rooms" do %>
+        <%= render partial: "rooms/room", collection: @rooms %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="w-4/5 h-screen">
+    <%= render "app_components/chat_input" %>
+  </div>
+</div>

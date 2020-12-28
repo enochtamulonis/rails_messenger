@@ -1,0 +1,6 @@
+<%= form_for @room do |f| %>
+  <div class="flex h-full w-full">
+    <%= f.text_field :name, :class => "pl-1 h-20 bg-transparent w-full border-b border-black", placeholder: "Enter name of conversation" %>
+    <%= f.submit :class => "bg-transparent cursor-pointer" %>
+  </div>
+<% end %>
