@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   def signed_in_home
     @rooms = Room.all
   end
@@ -8,8 +7,13 @@ class PagesController < ApplicationController
   end
 
   def search
-    render json: { friends: [] }
+    @q = User.where('username LIKE :query OR email LIKE :query', query: "%#{params[:q]}%").ransack
+    @users = @q.result(distinct: true).limit(8)
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
+
   def about
   end
 

@@ -1,0 +1,15 @@
+<turbo-stream action="update" target="results">
+  <template>
+    <% if @users.count != 0 && params[:q] != "" %>
+      <%= content_tag(:h1, "Users with emails or usernames matching /#{params[:q]}/") %>
+      <% @users.each do |user| %>
+        <%= user.email %>
+        <%= user.username %>
+      <% end %>
+    <% else %>
+      <% unless params[:q] == "" %>
+        <%= content_tag( :h1, 'Sorry no results!') %>
+      <% end %>
+    <% end %>
+  </template>
+</turbo-stream>

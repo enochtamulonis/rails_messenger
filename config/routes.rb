@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'pages/signed_in_home'
   get "/search", to: "pages#search"
 
-  root 'pages#home'
   resources :rooms
+  root 'pages#home'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
