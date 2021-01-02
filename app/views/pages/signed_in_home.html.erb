@@ -1,13 +1,13 @@
 <div class="flex">
   <%= turbo_frame_tag "messenger_sidebar" do %>
-    <div class="w-1/5 h-full bg-gray-400 flex flex-col items-center fixed">
-      <div class="h-10 w-full bg-gray-30">
+    <div class="w-1/5 h-full bg-gray-400 flex flex-col items-center fixed" data-turbo-permanent>
+      <div class="h-10 w-full bg-gray-300">
         <%= turbo_frame_tag "new_room" do %>
           <%= form_with url: search_path, local: true, method: :get, html: { class: "flex w-full h-full", data: {controller: "autocomplete"}} do |form| %>
             <%= form.text_field :q, placeholder: "Search", :class => "h-full w-4/5 pl-2", autocomplete: "off", data: {action: "input->autocomplete#submitForm"}%>
             <%= form.submit "Search", :class => "w-1/5 h-full", data: {autocomplete_target: "submit"} %>
           <% end %>
-          <ul id="results" class="absolute h-auto w-1/5 bg-gray-300">
+          <ul id="results" class="absolute h-auto w-full bg-gray-300">
           </ul>
         <% end %>
       </div>
@@ -20,6 +20,7 @@
     </div>
   <% end %>
 
-  <div class="w-4/5 h-screen">
+  <div class="ml-auto w-4/5 h-screen flex justify-center items-center">
+    <h1 class="text-2xl">Join a room to start talking</h1>
   </div>
 </div>

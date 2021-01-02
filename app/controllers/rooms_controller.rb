@@ -15,18 +15,18 @@ class RoomsController < ApplicationController
     @room = Room.new(name: params[:room][:users_name].to_s, user_id: current_user.id)
     @room.users = [current_user.id, params[:room][:user_id].to_i]
     if @room.save
-      redirect_to pages_signed_in_home_path
+      redirect_to signed_in_home_path
     end
   end
 
   def destroy
     @room.destroy
-    redirect_to pages_signed_in_home_path
+    redirect_to signed_in_home_path
   end
 
   def update
     @room.update(room_params)
-    redirect_to pages_signed_in_home_path
+    redirect_to signed_in_home_path
   end
 
   private

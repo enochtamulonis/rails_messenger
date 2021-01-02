@@ -5,7 +5,7 @@
     <% end %>
     <div class="flex">
       <%= link_to "edit", edit_room_path(room), :class => "w-12 h-full text-center flex items-center" %>
-      <%= button_to "X", room, method: :delete, :class => "bg-transparent w-12 h-full text-red-500 text-center" %>
+      <%= button_to "X", room, method: :delete, :class => "bg-transparent w-12 h-full text-red-500 text-center", data: {confirm: "Are u sure"} %>
     </div>
   </li>
 <% end %>
