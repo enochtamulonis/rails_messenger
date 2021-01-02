@@ -15,7 +15,7 @@
         <%= turbo_frame_tag "user_authentication" do %>
           <div class="flex">
             <h3 class="text-lg pr-1"> Signed in as <%= current_user.email.split("@").shift() %></h3>
-            <a class="text-lg border-b border-black hover:text-blue-500" href="<%= pages_signed_in_home_path %> " target="_top">Continue to messeges </a>
+            <a class="text-lg border-b border-black hover:text-blue-500" href="<%= signed_in_home_path %> " target="_top">Continue to messeges </a>
           </div>
         <% end %>
       <% end %>

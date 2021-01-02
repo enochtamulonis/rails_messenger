@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "messenger_sidebar", src: "/signed_in_home" do %>
+<% end %>
+<div class="h-full w-4/5 ml-auto overflow-scroll">
+  <%= turbo_frame_tag "messages", src: room_messages_path(@room) do %>
+  <% end %>
+</div>
+<%= turbo_frame_tag "messages_form", src: new_room_message_path(@room) do %>
+<% end %>

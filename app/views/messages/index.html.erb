@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "messages" do %>
+  <%= turbo_stream_from "messages" %>
+  <%= render @messages %>
+<% end %>

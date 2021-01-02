@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, except: [:new, :create]
+  before_action :set_room, except: [:new, :create, :messenger_sidebar]
 
   def new
     @room = Room.new
@@ -8,9 +8,12 @@ class RoomsController < ApplicationController
   def edit
   end
 
+  def show
+  end
 
   def create
-    @room = Room.new(room_params)
+    @room = Room.new(name: params[:room][:users_name].to_s, user_id: current_user.id)
+    @room.users = [current_user.id, params[:room][:user_id].to_i]
     if @room.save
       redirect_to pages_signed_in_home_path
     end
@@ -31,7 +34,5 @@ class RoomsController < ApplicationController
   def set_room
     @room = Room.find(params[:id])
   end
-  def room_params
-    params.require(:room).permit(:name)
-  end
+
 end

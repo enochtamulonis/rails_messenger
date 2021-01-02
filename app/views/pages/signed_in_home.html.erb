@@ -1,23 +1,25 @@
 <div class="flex">
-  <div class="w-1/5 h-screen bg-gray-400 flex flex-col items-center">
-    <div class="h-10 w-full bg-gray-30">
-      <%= turbo_frame_tag "new_room" do %>
-        <%= form_with url: search_path, local: true, method: :get, html: { class: "flex w-full h-full", data: {controller: "autocomplete"}} do |form| %>
-          <%= form.text_field :q, placeholder: "Search", :class => "h-full w-4/5 pl-2", autocomplete: "off", data: {action: "input->autocomplete#submitForm"}%>
-          <%= form.submit "Search", :class => "w-1/5 h-full", data: {autocomplete_target: "submit"} %>
+  <%= turbo_frame_tag "messenger_sidebar" do %>
+    <div class="w-1/5 h-full bg-gray-400 flex flex-col items-center fixed">
+      <div class="h-10 w-full bg-gray-30">
+        <%= turbo_frame_tag "new_room" do %>
+          <%= form_with url: search_path, local: true, method: :get, html: { class: "flex w-full h-full", data: {controller: "autocomplete"}} do |form| %>
+            <%= form.text_field :q, placeholder: "Search", :class => "h-full w-4/5 pl-2", autocomplete: "off", data: {action: "input->autocomplete#submitForm"}%>
+            <%= form.submit "Search", :class => "w-1/5 h-full", data: {autocomplete_target: "submit"} %>
+          <% end %>
+          <ul id="results" class="absolute h-auto w-1/5 bg-gray-300">
+          </ul>
         <% end %>
-        <ul id="results" class="absolute h-auto w-1/5 bg-gray-300">
-        </ul>
-      <% end %>
+      </div>
+      <ul class="w-full h-full">
+        <%= turbo_stream_from "rooms" %>
+        <%= turbo_frame_tag "rooms" do %>
+          <%= render partial: "rooms/room", collection: @rooms %>
+        <% end %>
+      </ul>
     </div>
-    <ul class="w-full h-full">
-      <%= turbo_stream_from "rooms" %>
-      <%= turbo_frame_tag "rooms" do %>
-        <%= render partial: "rooms/room", collection: @rooms %>
-      <% end %>
-    </ul>
-  </div>
+  <% end %>
+
   <div class="w-4/5 h-screen">
-    <%= render "app_components/chat_input" %>
   </div>
 </div>

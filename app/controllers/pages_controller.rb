@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   end
 
   def search
+    @room = Room.new
     @q = User.where('username LIKE :query OR email LIKE :query', query: "%#{params[:q]}%").ransack
     @users = @q.result(distinct: true).limit(8)
     respond_to do |format|

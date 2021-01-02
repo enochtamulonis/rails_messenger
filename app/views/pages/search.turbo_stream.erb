@@ -3,8 +3,14 @@
     <% if @users.count != 0 && params[:q] != "" %>
       <%= content_tag(:h1, "Users with emails or usernames matching /#{params[:q]}/") %>
       <% @users.each do |user| %>
-        <%= user.email %>
-        <%= user.username %>
+        <div class="flex px-1">
+          <%= user.username_or_email(user) %>
+          <%= form_for @room do |f| %>
+            <%= f.hidden_field :user_id, value: user.id %>
+            <%= f.hidden_field :users_name, value: user.username_or_email(user) %>
+            <%= f.submit "Talk" %>
+          <% end %>
+        </div>
       <% end %>
     <% else %>
       <% unless params[:q] == "" %>
