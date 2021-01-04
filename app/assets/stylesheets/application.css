@@ -27,7 +27,7 @@ html {
 
 /* Webkit browsers*/
 .messages-scroll::-webkit-scrollbar {
-  display: none;
+  background-color: lightpink;
 }
 
 /* IE and Firefox*/
