@@ -23,15 +23,3 @@ html {
   padding: 0;
   margin: 0;
 }
-/* Hide Scroll Bars for messages window */
-
-/* Webkit browsers*/
-.messages-scroll::-webkit-scrollbar {
-  background-color: lightpink;
-}
-
-/* IE and Firefox*/
-.messages-scroll {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
