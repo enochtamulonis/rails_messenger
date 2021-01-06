@@ -8,8 +8,8 @@ class PagesController < ApplicationController
 
   def search
     @room = Room.new
-    @q = User.where('username LIKE :query OR email LIKE :query', query: "%#{params[:q]}%").ransack
-    @users = @q.result(distinct: true).limit(8)
+    @q = User.where('username LIKE :query OR email LIKE :query', query: "%#{params[:q]}%")
+    @users = @q.limit(8)
     respond_to do |format|
       format.turbo_stream
     end
