@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(name: params[:room][:users_name].to_s, user_id: current_user.id)
+    @room = Room.new(name: params[:room][:users_name].to_s)
     @room.users = [current_user.id, params[:room][:user_id].to_i]
     if @room.save
       redirect_to signed_in_home_path
