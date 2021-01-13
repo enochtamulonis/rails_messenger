@@ -1,5 +1,5 @@
 class RemoveUserFromMessage < ActiveRecord::Migration[6.0]
   def change
-    remove_column :messages, :user
+    drop_table :users
   end
 end
