@@ -12,16 +12,16 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new(name: params[:room][:users_name].to_s)
-    @room.users = [current_user.id, params[:room][:user_id].to_i]
+    session[:current_user] = params[:room][:name]
+    @room = Room.new(name: session[:current_user], users: [session[:current_user]])
     if @room.save
-      redirect_to signed_in_home_path
+      redirect_to @room
     end
   end
 
   def destroy
     @room.destroy
-    redirect_to signed_in_home_path
+    redirect_to root_pat
   end
 
   def update

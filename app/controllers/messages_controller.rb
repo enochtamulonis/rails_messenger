@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  require 'pry'
 
   before_action :get_room
   before_action :set_message, only: [:show, :edit, :update, :destroy]
@@ -13,7 +12,6 @@ class MessagesController < ApplicationController
 
   def create
     @message = @room.messages.build(message_params)
-    @message.user_id = current_user.id
     if @message.save
       redirect_to room_messages_path(@room)
     end
