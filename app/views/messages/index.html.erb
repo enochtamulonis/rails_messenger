@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "messages" do %>
   <%= turbo_stream_from "messages" %>
   <div data-messages-target="messagesWrapper">
-    <%= render @messages.asc %>
+    <%= render @messages %>
   </div>
 <% end %>

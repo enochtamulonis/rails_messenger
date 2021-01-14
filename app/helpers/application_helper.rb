@@ -1,9 +1,7 @@
 module ApplicationHelper
-  def route_to_home
-    if current_user
-      signed_in_home_path
-    else
-      root_path
+  def set_username
+    if !@username
+      @username = session[:current_user]
     end
   end
 end

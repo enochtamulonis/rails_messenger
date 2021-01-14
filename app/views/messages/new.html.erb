@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "messages_form" do %>
-  <%= form_with(model: [@room, @message], html: {class: " fixed bottom-0 right-0 h-56 w-full flex bg-gray-200 pt-2" }) do |f| %>
+  <%= form_with(model: [@room, @message], html: {class: " fixed bottom-0 right-0 h-56 w-full flex bg-gray-200 pt-2" }, data_controller: "messages-form") do |f| %>
     <div class="flex flex-col w-11/12 px-2 pb-1">
       <%= f.rich_text_area :content, :class => "h-full w-full pt-4 pl-4" %>
     </div>

@@ -1,6 +1,11 @@
-<div class="h-full w-full" data-controller="messages">
-  <%= turbo_frame_tag "messages", src: room_messages_path(@room) do %>
-  <% end %>
+<div class="h-full w-full">
+  <div id="allMessages">
+    <%= render partial: "messages/message", collection: @messages %>
+  </div>
 </div>
-<%= turbo_frame_tag "messages_form", src: new_room_message_path(@room) do %>
+<div class="h-56 w-full absolute"></div>
+<%= turbo_frame_tag "messages_form" do %>
+  <%= render "messages/form", :room => @room %>
 <% end %>
+<div id="logInModal">
+</div>

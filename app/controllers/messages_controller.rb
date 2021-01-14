@@ -1,35 +1,30 @@
 class MessagesController < ApplicationController
-
   before_action :get_room
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
-  def new
-    @message = @room.messages.build
-  end
-
-  def index
-    @messages = @room.messages
-  end
+  before_action :set_username
 
   def create
     @message = @room.messages.build(message_params)
     if @message.save
-      redirect_to room_messages_path(@room)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to room_path(@room) }
+      end
     end
   end
 
   def destroy
+    @message = @room.messages.find(params[:id])
     @message.destroy!
-    redirect_to room_messages_path(@room)
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to room_path(@room)}
+    end
   end
 
   private
 
   def message_params
     params.require(:message).permit(:content)
-  end
-
-  def set_message
-    @message = @room.messages.find(params[:id])
   end
 
   def get_room
