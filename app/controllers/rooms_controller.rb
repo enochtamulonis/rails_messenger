@@ -13,10 +13,6 @@ class RoomsController < ApplicationController
     @messages = @room.messages.order("created_at ASC").limit(5)
   end
 
-  def sign_in
-
-  end
-
   def create
     session[:current_user] = params[:room][:name]
     @room = Room.new(name: session[:current_user])
