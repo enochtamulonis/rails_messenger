@@ -19,7 +19,7 @@ class RoomsController < ApplicationController
 
   def create
     session[:current_user] = params[:room][:name]
-    @room = Room.new(name: session[:current_user], users: [session[:current_user]])
+    @room = Room.new(name: session[:current_user])
     if @room.save
       redirect_to @room
     end
