@@ -9,6 +9,9 @@ class RoomsController < ApplicationController
   end
 
   def show
+    if !session[:current_user]
+
+    end 
     @messages = @room.messages.order("created_at ASC").limit(5)
   end
 

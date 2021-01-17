@@ -8,6 +8,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "autoprefixer": "^9.8.6",
+    "cable_ready": "^4.4.6",
     "postcss": "^7.0.35",
     "tailwindcss": "^2.0.1-compat",
     "trix": "^1.2.0",
